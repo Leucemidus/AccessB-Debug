@@ -1,0 +1,18 @@
+c:\users\sodor\documents\visual studio 2012\Projects\AccessB_Debug\AccessB_Debug\bin\Debug\AccessB_Debug.exe.config
+c:\users\sodor\documents\visual studio 2012\Projects\AccessB_Debug\AccessB_Debug\bin\Debug\AccessB_Debug.exe
+c:\users\sodor\documents\visual studio 2012\Projects\AccessB_Debug\AccessB_Debug\bin\Debug\AccessB_Debug.pdb
+c:\users\sodor\documents\visual studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.csprojResolveAssemblyReference.cache
+c:\users\sodor\documents\visual studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.Form1.resources
+c:\users\sodor\documents\visual studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.Properties.Resources.resources
+c:\users\sodor\documents\visual studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.csproj.GenerateResource.Cache
+c:\users\sodor\documents\visual studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.exe
+c:\users\sodor\documents\visual studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.pdb
+C:\Users\Omar trevizo\Documents\Visual Studio 2012\Projects\AccessB_Debug\AccessB_Debug\bin\Debug\AccessB_Debug.exe.config
+C:\Users\Omar trevizo\Documents\Visual Studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.exe
+C:\Users\Omar trevizo\Documents\Visual Studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.pdb
+C:\Users\Omar trevizo\Documents\Visual Studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.csprojResolveAssemblyReference.cache
+C:\Users\Omar trevizo\Documents\Visual Studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.Form1.resources
+C:\Users\Omar trevizo\Documents\Visual Studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.Properties.Resources.resources
+C:\Users\Omar trevizo\Documents\Visual Studio 2012\Projects\AccessB_Debug\AccessB_Debug\obj\Debug\AccessB_Debug.csproj.GenerateResource.Cache
+C:\Users\Omar trevizo\Documents\Visual Studio 2012\Projects\AccessB_Debug\AccessB_Debug\bin\Debug\AccessB_Debug.exe
+C:\Users\Omar trevizo\Documents\Visual Studio 2012\Projects\AccessB_Debug\AccessB_Debug\bin\Debug\AccessB_Debug.pdb
