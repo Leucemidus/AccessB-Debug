@@ -96,9 +96,6 @@ namespace AccessB_Debug
         public UInt32 PORTCbits_RC6 { set { SFRBitValue(130, 6 , value); } get { return SFRBitValue(130, 6); } }
         public UInt32 PORTCbits_RC7 { set { SFRBitValue(130, 7 , value); } get { return SFRBitValue(130, 7); } }
 
-        //Read only bit on 18F2550 devices, TRISE and LATE aren't implemented on 18F2550 devices
-        public UInt32 PORTEbits_RE3 { get { return SFRBitValue(132, 3); } }
-
         public UInt32 LATA { set { SFRValue(137, value); } get { return SFRValue(137); } }
         public UInt32 LATAbits_LATA0 { set { SFRBitValue(137, 0, value); } get { return SFRBitValue(137, 0); } }
         public UInt32 LATAbits_LATA1 { set { SFRBitValue(137, 1, value); } get { return SFRBitValue(137, 1); } }
@@ -554,80 +551,6 @@ namespace AccessB_Debug
         public UInt32 TOSU { set { SFRValue(255, value); } get { return SFRValue(255); } }
 
 
-        /*********************************************************************************************
-         * The next GPIO methods are for I/O managment, experimented users of PIC devices
-         * mey be more adept to use the TRISx, LATx and PORTx methods to gain access to that
-         * registers of the PIC, while others may be prefer to access to PIN values, direction
-         * and latch in a more general method like these GPIOx/GPIO_DIRx/GPIO_LATCHx. The use of 
-         * PORTx methods or GPIOx methods (TRISx/GPIO_DIRx, LATx/GPIO_LATx) both are valid, but 
-         * GPIOx methods are more slow than PORTx/TRISx/LATx methods because of how that are programed.
-         *********************************************************************************************/
-
-
-        //GPIO methods, is the same as use PORTx methods but a little slower
-        public UInt32 GPIO0 { get { return SFRBitValue(132, 3); } }
-        public UInt32 GPIO1 { set { SFRBitValue(130, 0, value); } get { return SFRBitValue(130, 0); } }
-        public UInt32 GPIO2 { set { SFRBitValue(130, 1, value); } get { return SFRBitValue(130, 1); } }
-        public UInt32 GPIO3 { set { SFRBitValue(130, 2, value); } get { return SFRBitValue(130, 2); } }
-        public UInt32 GPIO4 { set { SFRBitValue(130, 6, value); } get { return SFRBitValue(130, 6); } }
-        public UInt32 GPIO5 { set { SFRBitValue(130, 7, value); } get { return SFRBitValue(130, 7); } }
-        public UInt32 GPIO6 { set { SFRBitValue(129, 0, value); } get { return SFRBitValue(129, 0); } }
-        public UInt32 GPIO7 { set { SFRBitValue(129, 1, value); } get { return SFRBitValue(129, 1); } }
-        public UInt32 GPIO8 { set { SFRBitValue(129, 2, value); } get { return SFRBitValue(129, 2); } }
-        public UInt32 GPIO9 { set { SFRBitValue(129, 3, value); } get { return SFRBitValue(129, 3); } }
-        public UInt32 GPIO10 { set { SFRBitValue(129, 4, value); } get { return SFRBitValue(129, 4); } }
-        public UInt32 GPIO11 { set { SFRBitValue(129, 5, value); } get { return SFRBitValue(129, 5); } }
-        public UInt32 GPIO12 { set { SFRBitValue(129, 6, value); } get { return SFRBitValue(129, 6); } }
-        public UInt32 GPIO13 { set { SFRBitValue(129, 7, value); } get { return SFRBitValue(129, 7); } }
-        public UInt32 GPIO14 { set { SFRBitValue(128, 0, value); } get { return SFRBitValue(128, 0); } }
-        public UInt32 GPIO15 { set { SFRBitValue(128, 1, value); } get { return SFRBitValue(128, 1); } }
-        public UInt32 GPIO16 { set { SFRBitValue(128, 2, value); } get { return SFRBitValue(128, 2); } }
-        public UInt32 GPIO17 { set { SFRBitValue(128, 3, value); } get { return SFRBitValue(128, 3); } }
-        public UInt32 GPIO18 { set { SFRBitValue(128, 4, value); } get { return SFRBitValue(128, 4); } }
-        public UInt32 GPIO19 { set { SFRBitValue(128, 5, value); } get { return SFRBitValue(128, 5); } }
-
-        //GPIO Latch methods, is the same as use LATx methods but a little slower, LATE isn't implemented on 18F2550 devices
-        public UInt32 GPIO_LATCH1 { set { SFRBitValue(139, 0, value); } get { return SFRBitValue(139, 0); } }
-        public UInt32 GPIO_LATCH2 { set { SFRBitValue(139, 1, value); } get { return SFRBitValue(139, 1); } }
-        public UInt32 GPIO_LATCH3 { set { SFRBitValue(139, 2, value); } get { return SFRBitValue(139, 2); } }
-        public UInt32 GPIO_LATCH4 { set { SFRBitValue(139, 6, value); } get { return SFRBitValue(139, 6); } }
-        public UInt32 GPIO_LATCH5 { set { SFRBitValue(139, 7, value); } get { return SFRBitValue(139, 7); } }
-        public UInt32 GPIO_LATCH6 { set { SFRBitValue(138, 0, value); } get { return SFRBitValue(138, 0); } }
-        public UInt32 GPIO_LATCH7 { set { SFRBitValue(138, 1, value); } get { return SFRBitValue(138, 1); } }
-        public UInt32 GPIO_LATCH8 { set { SFRBitValue(138, 2, value); } get { return SFRBitValue(138, 2); } }
-        public UInt32 GPIO_LATCH9 { set { SFRBitValue(138, 3, value); } get { return SFRBitValue(138, 3); } }
-        public UInt32 GPIO_LATCH10 { set { SFRBitValue(138, 4, value); } get { return SFRBitValue(138, 4); } }
-        public UInt32 GPIO_LATCH11 { set { SFRBitValue(138, 5, value); } get { return SFRBitValue(138, 5); } }
-        public UInt32 GPIO_LATCH12 { set { SFRBitValue(138, 6, value); } get { return SFRBitValue(138, 6); } }
-        public UInt32 GPIO_LATCH13 { set { SFRBitValue(138, 7, value); } get { return SFRBitValue(138, 7); } }
-        public UInt32 GPIO_LATCH14 { set { SFRBitValue(137, 0, value); } get { return SFRBitValue(137, 0); } }
-        public UInt32 GPIO_LATCH15 { set { SFRBitValue(137, 1, value); } get { return SFRBitValue(137, 1); } }
-        public UInt32 GPIO_LATCH16 { set { SFRBitValue(137, 2, value); } get { return SFRBitValue(137, 2); } }
-        public UInt32 GPIO_LATCH17 { set { SFRBitValue(137, 3, value); } get { return SFRBitValue(137, 3); } }
-        public UInt32 GPIO_LATCH18 { set { SFRBitValue(137, 4, value); } get { return SFRBitValue(137, 4); } }
-        public UInt32 GPIO_LATCH19 { set { SFRBitValue(137, 5, value); } get { return SFRBitValue(137, 5); } }
-
-        //GPIO Direction methods, is the same as use TRISx methods but a little slower, TRISE isn't implemented on 18F2550 devices
-        public UInt32 GPIO_DIR1 { set { SFRBitValue(148, 0, value); } get { return SFRBitValue(148, 0); } }
-        public UInt32 GPIO_DIR2 { set { SFRBitValue(148, 1, value); } get { return SFRBitValue(148, 1); } }
-        public UInt32 GPIO_DIR3 { set { SFRBitValue(148, 2, value); } get { return SFRBitValue(148, 2); } }
-        public UInt32 GPIO_DIR4 { set { SFRBitValue(148, 6, value); } get { return SFRBitValue(148, 6); } }
-        public UInt32 GPIO_DIR5 { set { SFRBitValue(148, 7, value); } get { return SFRBitValue(148, 7); } }
-        public UInt32 GPIO_DIR6 { set { SFRBitValue(147, 0, value); } get { return SFRBitValue(147, 0); } }
-        public UInt32 GPIO_DIR7 { set { SFRBitValue(147, 1, value); } get { return SFRBitValue(147, 1); } }
-        public UInt32 GPIO_DIR8 { set { SFRBitValue(147, 2, value); } get { return SFRBitValue(147, 2); } }
-        public UInt32 GPIO_DIR9 { set { SFRBitValue(147, 3, value); } get { return SFRBitValue(147, 3); } }
-        public UInt32 GPIO_DIR10 { set { SFRBitValue(147, 4, value); } get { return SFRBitValue(147, 4); } }
-        public UInt32 GPIO_DIR11 { set { SFRBitValue(147, 5, value); } get { return SFRBitValue(147, 5); } }
-        public UInt32 GPIO_DIR12 { set { SFRBitValue(147, 6, value); } get { return SFRBitValue(147, 6); } }
-        public UInt32 GPIO_DIR13 { set { SFRBitValue(147, 7, value); } get { return SFRBitValue(147, 7); } }
-        public UInt32 GPIO_DIR14 { set { SFRBitValue(146, 0, value); } get { return SFRBitValue(146, 0); } }
-        public UInt32 GPIO_DIR15 { set { SFRBitValue(146, 1, value); } get { return SFRBitValue(146, 1); } }
-        public UInt32 GPIO_DIR16 { set { SFRBitValue(146, 2, value); } get { return SFRBitValue(146, 2); } }
-        public UInt32 GPIO_DIR17 { set { SFRBitValue(146, 3, value); } get { return SFRBitValue(146, 3); } }
-        public UInt32 GPIO_DIR18 { set { SFRBitValue(146, 4, value); } get { return SFRBitValue(146, 4); } }
-        public UInt32 GPIO_DIR19 { set { SFRBitValue(146, 5, value); } get { return SFRBitValue(146, 5); } }
-
         #endregion
 
         #region Valores para registros de configuracion de perifericos
@@ -996,12 +919,13 @@ namespace AccessB_Debug
         /// <returns>The value contained in the selected SFR.</returns>
         public UInt32 SFRValue(UInt32 Register)
         {
-            byte[] SndData = new byte[64];                                                              //Datos a enviar
-            byte[] RcvData = new byte[64];                                                              //Datos recibidos, eco del comando enviado para verificación
-                                                                            
-            SndData[0] = 1;                                                                             //Cmd Leer
-            SndData[1] = Convert.ToByte((Register>>8) & 0x00FF);                                        //AddrH, sin importancia para SFR ya que ese valor se completa dentro del mismo PIC
-            SndData[2] = Convert.ToByte(Register & 0x00FF);                                             //AddrL
+            byte[] SndData = new byte[65];                                                              //Datos a enviar
+            byte[] RcvData = new byte[65];                                                              //Datos recibidos, eco del comando enviado para verificación
+
+            SndData[0] = 0;                                                                             //If this is not zero this wont work
+            SndData[1] = 1;                                                                             //Cmd Leer
+            SndData[2] = Convert.ToByte((Register>>8) & 0x00FF);                                        //AddrH, sin importancia para SFR ya que ese valor se completa dentro del mismo PIC
+            SndData[3] = Convert.ToByte(Register & 0x00FF);                                             //AddrL
 
             if (WriteUSB(ref SndData) == false)                                                         //Envia el comando a la tarjeta
             {
@@ -1011,9 +935,9 @@ namespace AccessB_Debug
             if (ReadUSB(ref RcvData, false) == true)                                                    //Espera la respuesta de la tarjeta
             {
                 //Verificamos que recibio el comando correcto
-                if (RcvData[0] == SndData[0])                                                           //Si los valores son iguales, el comando fue recibido correctamente
+                if (RcvData[1] == SndData[1])                                                           //Si los valores son iguales, el comando fue recibido correctamente
                 {
-                    return BitConverter.ToUInt32(RcvData, 3);// &0xFF;                                    //DAtos en bytes 4 y 5, solo 8 bits
+                    return BitConverter.ToUInt32(RcvData, 4) & 0xFF;                                    //DAtos en bytes 4 y 5, solo 8 bits
                 }
                 else
                 {
@@ -1040,15 +964,15 @@ namespace AccessB_Debug
         /// <returns>True if the value was written, false if not.</returns>
         public bool SFRValue(UInt32 Register, UInt32 Value)
         {
-            byte[] SndData = new byte[64];                                                              //Datos a enviar
-            byte[] RcvData = new byte[64];                                                              //Datos recibidos, eco del comando enviado para verificación
+            byte[] SndData = new byte[65];                                                              //Datos a enviar
+            byte[] RcvData = new byte[65];                                                              //Datos recibidos, eco del comando enviado para verificación
 
-            //SndData[0] = 0;                                                                             //If this is not zero it wont work
-            SndData[0] = 2;                                                                             //Cmd Escribir
-            SndData[1] = Convert.ToByte((Register >> 8) & 0x00FF);                                      //AddrH, sin importancia para SFR ya que ese valor se completa dentro del mismo PIC
-            SndData[2] = Convert.ToByte(Register & 0x00FF);                                             //AddrL
-            SndData[3] = Convert.ToByte((Value & 0x00FF));                                              //DatosL
-            SndData[4] = Convert.ToByte((Value >> 8) & 0x00FF);                                         //DatosH que se quiere escribir en el SFR
+            SndData[0] = 0;                                                                             //If this is not zero it wont work
+            SndData[1] = 2;                                                                             //Cmd Escribir
+            SndData[2] = Convert.ToByte((Register >> 8) & 0x00FF);                                      //AddrH, sin importancia para SFR ya que ese valor se completa dentro del mismo PIC
+            SndData[3] = Convert.ToByte(Register & 0x00FF);                                             //AddrL
+            SndData[4] = Convert.ToByte((Value & 0x00FF));                                              //DatosL
+            SndData[5] = Convert.ToByte((Value >> 8) & 0x00FF);                                         //DatosH que se quiere escribir en el SFR
             
 
             if (WriteUSB(ref SndData) == false)                                                         //Envia el comando a la tarjeta
@@ -1059,7 +983,7 @@ namespace AccessB_Debug
             if (ReadUSB(ref RcvData, false) == true)                                                    //Espera la respuesta de la tarjeta
             {
                 //Verificamos que recibio el comando correcto
-                if (RcvData[0] == SndData[0])                                                           //Si los valores son iguales, el comando fue recibido correctamente
+                if (RcvData[1] == SndData[1])                                                           //Si los valores son iguales, el comando fue recibido correctamente
                 {
 
                     return true;
@@ -1086,22 +1010,22 @@ namespace AccessB_Debug
         /// <returns>True if the bit was changed, false if not.</returns>
         public bool SFRBitValue(UInt32 Register, byte bit, UInt32 value)
         {
-            byte[] SndData = new byte[64];
-            byte[] RcvData = new byte[64];
+            byte[] SndData = new byte[65];
+            byte[] RcvData = new byte[65];
 
-            //SndData[0] = 0;                                                                             //If this is not zero it wont work
-            SndData[0] = SFR_CHANGE_BIT_VALUE;                                                          //CMD
-            SndData[1] = Convert.ToByte((Register >> 8) & 0x00FF);                                      //AddrH, sin importancia para SFR ya que ese valor se completa dentro del mismo PIC
-            SndData[2] = Convert.ToByte(Register & 0x00FF);                                             //AddrL
-            SndData[3] = bit;                                                                           //Bit position to change
+            SndData[0] = 0;                                                                             //If this is not zero it wont work
+            SndData[1] = SFR_CHANGE_BIT_VALUE;                                                          //CMD
+            SndData[2] = Convert.ToByte((Register >> 8) & 0x00FF);                                      //AddrH, sin importancia para SFR ya que ese valor se completa dentro del mismo PIC
+            SndData[3] = Convert.ToByte(Register & 0x00FF);                                             //AddrL
+            SndData[4] = bit;                                                                           //Bit position to change
 
             if (value == 1)
             {
-                SndData[4] = 1;                                                                         //Bit value
+                SndData[5] = 1;                                                                         //Bit value
             }
             else if (value == 0)
             {
-                SndData[4] = 0;                                                                         //Bit value
+                SndData[5] = 0;                                                                         //Bit value
             }
             else
             {
@@ -1126,14 +1050,14 @@ namespace AccessB_Debug
         /// <returns>Return 0 or 1</returns>
         public UInt32 SFRBitValue(UInt32 Register, byte bit)
         {
-            byte[] SndData = new byte[64];
-            byte[] RcvData = new byte[64];
+            byte[] SndData = new byte[65];
+            byte[] RcvData = new byte[65];
 
-            //SndData[0] = 0;                                                                             //If this is not zero it wont work
-            SndData[0] = CMD_READ_BIT_VALUE;                                                            //CMD
-            SndData[1] = Convert.ToByte((Register >> 8) & 0x00FF);                                      //AddrH
-            SndData[2] = Convert.ToByte(Register & 0x00FF);                                             //AddrL
-            SndData[3] = bit;                                                                           //Bit position to read
+            SndData[0] = 0;                                                                             //If this is not zero it wont work
+            SndData[1] = CMD_READ_BIT_VALUE;                                                            //CMD
+            SndData[2] = Convert.ToByte((Register >> 8) & 0x00FF);                                      //AddrH
+            SndData[3] = Convert.ToByte(Register & 0x00FF);                                             //AddrL
+            SndData[4] = bit;                                                                           //Bit position to read
 
             if (WriteUSB(ref SndData) == false)                                                         //Envia el comando a la tarjeta
             {
@@ -1144,10 +1068,10 @@ namespace AccessB_Debug
             if (ReadUSB(ref RcvData, false) == true)                                                    //Espera la respuesta de la tarjeta
             {
                 //Verificamos que recibio el comando correcto
-                if (RcvData[0] == SndData[0])                                                           //Si los valores son iguales, el comando fue recibido correctamente
+                if (RcvData[1] == SndData[1])                                                           //Si los valores son iguales, el comando fue recibido correctamente
                 {
 
-                    return RcvData[1];                                                                  //DAtos en bytes 4 y 5
+                    return RcvData[2];                                                                  //DAtos en bytes 4 y 5
                 }
                 else
                 {
@@ -1170,15 +1094,15 @@ namespace AccessB_Debug
         /// <returns></returns>
         public bool ADC_CFG(UInt32 Configuration, UInt32 RangeOfChannels)
         {
-            byte[] SndData = new byte[64];
-            byte[] RcvData = new byte[64];
+            byte[] SndData = new byte[65];
+            byte[] RcvData = new byte[65];
 
             Configuration = Configuration | RangeOfChannels;
-            //SndData[0] = 0;                                                                             //If this is not zero it wont work
-            SndData[0] = CMD_ADC_CFG;                                                                   //CMD
-            SndData[1] = Convert.ToByte((Configuration & 0xFF));                                        //ADCON0
-            SndData[2] = Convert.ToByte((Configuration >> 8) & 0xFF);                                   //ADCON1
-            SndData[3] = Convert.ToByte((Configuration >> 16) & 0xFF);                                  //ADCON2
+            SndData[0] = 0;                                                                             //If this is not zero it wont work
+            SndData[1] = CMD_ADC_CFG;                                                                   //CMD
+            SndData[2] = Convert.ToByte((Configuration & 0xFF));                                        //ADCON0
+            SndData[3] = Convert.ToByte((Configuration >> 8) & 0xFF);                                   //ADCON1
+            SndData[4] = Convert.ToByte((Configuration >> 16) & 0xFF);                                  //ADCON2
 
             if (WriteUSB(ref SndData) == false)                                                         //Envia el comando a la tarjeta
             {
@@ -1213,12 +1137,12 @@ namespace AccessB_Debug
         /// <returns>The converted value from the ADC channel selected, range 0-1024</returns>
         public UInt16 ADC_Val(UInt32 Channel)
         {
-            byte[] SndData = new byte[64];                                                              //Datos a enviar
-            byte[] RcvData = new byte[64];                                                              //Datos recibidos, eco del comando enviado para verificación
+            byte[] SndData = new byte[65];                                                              //Datos a enviar
+            byte[] RcvData = new byte[65];                                                              //Datos recibidos, eco del comando enviado para verificación
 
-            //SndData[0] = 0;                                                                             //If this is not zero it wont work
-            SndData[0] = CMD_ADC_Val;                                                                   //Cmd
-            SndData[1] = Convert.ToByte(Channel);                                                       // Selected Channel
+            SndData[0] = 0;                                                                             //If this is not zero it wont work
+            SndData[1] = CMD_ADC_Val;                                                                   //Cmd
+            SndData[2] = Convert.ToByte(Channel);                                                       // Selected Channel
 
             if (Channel == 5 || Channel == 6 || Channel == 7)
             {
@@ -1234,7 +1158,7 @@ namespace AccessB_Debug
             if (ReadUSB(ref RcvData, false) == true)                                                    //Espera la confirmación de recepcion
             {
                 //Verificamos que recibio el comando correcto y que la respuesta es la confirmación de recepcion
-                if ((RcvData[0] == SndData[0]) && (RcvData[1] == 255))                                  //Si los valores son iguales, el comando fue recibido correctamente
+                if ((RcvData[1] == SndData[1]) && (RcvData[2] == 255))                                  //Si los valores son iguales, el comando fue recibido correctamente
                 {
                     //Espero la respuesta al comando enviado
                     if (ReadUSB(ref RcvData, false) == true)
@@ -1336,13 +1260,13 @@ namespace AccessB_Debug
         public bool SPI_CFG(UInt32 Configuration)
         {
             
-            byte[] SndData = new byte[64];
-            byte[] RcvData = new byte[64];
+            byte[] SndData = new byte[65];
+            byte[] RcvData = new byte[65];
 
-            //SndData[0] = 0;                                                                             //If this is not zero it wont work
-            SndData[0] = CMD_SPI_CFG;                                                                   //CMD
-            SndData[1] = Convert.ToByte((Configuration >> 8) & 0xFF);                                   //SSPSTAT
-            SndData[2] = Convert.ToByte(Configuration & 0xFF);                                          //SSPCON1
+            SndData[0] = 0;                                                                             //If this is not zero it wont work
+            SndData[1] = CMD_SPI_CFG;                                                                   //CMD
+            SndData[2] = Convert.ToByte((Configuration >> 8) & 0xFF);                                   //SSPSTAT
+            SndData[3] = Convert.ToByte(Configuration & 0xFF);                                          //SSPCON1
 
             if (WriteUSB(ref SndData) == false)                                                         //Envia el comando a la tarjeta
             {
@@ -1378,8 +1302,8 @@ namespace AccessB_Debug
         /// <returns>Array of bytes received from the SPI bus</returns>
         public byte[] SPI_Transfer(byte NumOfBytesRx, byte NumOfBytesTx, byte[] Exdata, uint CS_pin)
         {
-            byte[] SndData = new byte[64];
-            byte[] RcvData = new byte[64];
+            byte[] SndData = new byte[65];
+            byte[] RcvData = new byte[65];
             byte[] SPIRead = new byte[NumOfBytesRx];
 
             if (NumOfBytesRx > 64)
@@ -1393,13 +1317,13 @@ namespace AccessB_Debug
                 return RcvData;
             }
 
-            //SndData[0] = 0;                                                                     //If this is not zero it wont work
-            SndData[0] = CMD_SPI_TRANSFERENCE;                                                  //CMD
-            SndData[1] = NumOfBytesRx;                                                          //Cantidad de bytes a leer
-            SndData[2] = NumOfBytesTx;                                                          //Cantidad de bytes a transmitir
-            SndData[3] = Convert.ToByte(CS_pin);                                                //Chip select PIN
+            SndData[0] = 0;                                                                     //If this is not zero it wont work
+            SndData[1] = CMD_SPI_TRANSFERENCE;                                                  //CMD
+            SndData[2] = NumOfBytesRx;                                                          //Cantidad de bytes a leer
+            SndData[3] = NumOfBytesTx;                                                          //Cantidad de bytes a transmitir
+            SndData[4] = Convert.ToByte(CS_pin);                                                //Chip select PIN
 
-            Exdata.CopyTo(SndData, 4);                                                          //Array de datos a intercambiar      
+            Exdata.CopyTo(SndData, 5);                                                          //Array de datos a intercambiar      
 
             if (WriteUSB(ref SndData) == false)                                                 //Envia el comando a la tarjeta
             {
@@ -1409,7 +1333,7 @@ namespace AccessB_Debug
             if (ReadUSB(ref RcvData, false) == true)                                            //Espera la confirmación de recepcion
             {
                 //Verificamos que recibio el comando correcto y que la respuesta es la confirmación de recepcion
-                if ((RcvData[0] == SndData[0]) && (RcvData[1] == 255))                          //Si los valores son iguales, el comando fue recibido correctamente
+                if ((RcvData[1] == SndData[1]) && (RcvData[2] == 255))                          //Si los valores son iguales, el comando fue recibido correctamente
                 {
                     //Espero la respuesta al comando enviado
                     if (ReadUSB(ref RcvData, false) == true)
@@ -1444,13 +1368,13 @@ namespace AccessB_Debug
         /// <returns></returns>
         public bool I2C_CFG(UInt32 Configuration)
         {
-            byte[] SndData = new byte[64];
+            byte[] SndData = new byte[65];
 
-            //SndData[0] = 0;                                                                     //If this is not zero it wont work
-            SndData[0] = CMD_I2C_CFG;                                                           //CMD
-            SndData[1] = Convert.ToByte(Configuration & 0xFF);                                  //SSPSTAT
-            SndData[2] = Convert.ToByte((Configuration>>8) & 0xFF);                             //SSPCON1
-            SndData[3] = Convert.ToByte((Configuration>>16) & 0xFF);                            //SSPADD BaudRate
+            SndData[0] = 0;                                                                     //If this is not zero it wont work
+            SndData[1] = CMD_I2C_CFG;                                                           //CMD
+            SndData[2] = Convert.ToByte(Configuration & 0xFF);                                  //SSPSTAT
+            SndData[3] = Convert.ToByte((Configuration>>8) & 0xFF);                             //SSPCON1
+            SndData[4] = Convert.ToByte((Configuration>>16) & 0xFF);                            //SSPADD BaudRate
 
             if (WriteUSB(ref SndData) == false)                                                 //Envia el comando a la tarjeta
             {
@@ -1490,8 +1414,8 @@ namespace AccessB_Debug
         /// <returns>Array of 64 bytes long of data from the I2C device</returns>
         public byte[] I2C_Transfer(UInt16 SlaveAdd,  byte SlaveAddType, UInt32 ReadWrite, byte NumOfBytesTx, byte NumOfBytesRx, byte[] TxData, byte Repeat)
         {
-            byte[] SndData = new byte[64];
-            byte[] RcvData = new byte[64];
+            byte[] SndData = new byte[65];
+            byte[] RcvData = new byte[65];
             byte[] I2CRead = new byte[NumOfBytesRx];
 
             if (NumOfBytesRx > 64)
@@ -1507,24 +1431,24 @@ namespace AccessB_Debug
             }
 
 
-            //SndData[0] = 0;                                                                             //If this is not zero it wont work
-            SndData[0] = CMD_I2C_TRANSFERENCE;                                                          //CMD
+            SndData[0] = 0;                                                                             //If this is not zero it wont work
+            SndData[1] = CMD_I2C_TRANSFERENCE;                                                          //CMD
             if (SlaveAddType == 7)
             {
-                SndData[1] = Convert.ToByte((SlaveAdd >> 8) & 0xFF);                                    //SLAVEADDH
-                SndData[2] = Convert.ToByte((((SlaveAdd << 1) & 0xFE) | (UInt16)ReadWrite) & 0xFF);     //SLAVEADDL with Read/Write bit
+                SndData[2] = Convert.ToByte((SlaveAdd >> 8) & 0xFF);                                    //SLAVEADDH
+                SndData[3] = Convert.ToByte((((SlaveAdd << 1) & 0xFE) | (UInt16)ReadWrite) & 0xFF);     //SLAVEADDL with Read/Write bit
             }
             else if(SlaveAddType == 10)                                                                 //10 bit address
             {
-                SndData[1] = Convert.ToByte((((SlaveAdd >> 7) & 0xFE) | (UInt16)ReadWrite) & 0xFF);     //SLAVEADDH with R/W bit
-                SndData[2] = Convert.ToByte(SlaveAdd & 0xFF);                                           //SLAVEADDL
+                SndData[2] = Convert.ToByte((((SlaveAdd >> 7) & 0xFE) | (UInt16)ReadWrite) & 0xFF);     //SLAVEADDH with R/W bit
+                SndData[3] = Convert.ToByte(SlaveAdd & 0xFF);                                           //SLAVEADDL
             }
 
-            SndData[3] = SlaveAddType;                                                                  //7 or 10 bits
-            SndData[4] = NumOfBytesTx;                                                                  //bytes to be Tx
-            SndData[5] = NumOfBytesRx;                                                                  //bytes to be RX
-            SndData[6] = Repeat;                                                                       //Restart
-            TxData.CopyTo(SndData, 7);                                                                  //Data to be Tx
+            SndData[4] = SlaveAddType;                                                                  //7 or 10 bits
+            SndData[5] = NumOfBytesTx;                                                                  //bytes to be Tx
+            SndData[6] = NumOfBytesRx;                                                                  //bytes to be RX
+            SndData[7] = Repeat;                                                                       //Restart
+            TxData.CopyTo(SndData, 8);                                                                  //Data to be Tx
 
             if (WriteUSB(ref SndData) == false)                                                         //Envia el comando a la tarjeta
             {
@@ -1534,16 +1458,16 @@ namespace AccessB_Debug
             if (ReadUSB(ref RcvData, false) == true)                                                    //Espera la confirmación de recepcion
             {
                 //Verificamos que recibio el comando correcto y que la respuesta es la confirmación de recepcion
-                if ((RcvData[0] == SndData[0]) && (RcvData[1] == 255))                                  //Si los valores son iguales, el comando fue recibido correctamente
+                if ((RcvData[1] == SndData[1]) && (RcvData[2] == 255))                                  //Si los valores son iguales, el comando fue recibido correctamente
                 {
                     //Espero la respuesta al comando enviado
                     if (ReadUSB(ref RcvData, false) == true)
                     {
-                        if (RcvData[0] == I2C_STATUS_NAK)                                                      //Not Acknowledge
+                        if (RcvData[1] == I2C_STATUS_NAK)                                                      //Not Acknowledge
                         {
                             MessageBox.Show("Transmission Fail: Slave Device NAK");
                         }
-                        Array.ConstrainedCopy(RcvData, 1, I2CRead, 0, NumOfBytesRx);
+                        Array.ConstrainedCopy(RcvData, 2, I2CRead, 0, NumOfBytesRx);
                         return I2CRead;
                     }
                     else
@@ -1576,18 +1500,18 @@ namespace AccessB_Debug
         /// <returns>True if the CCP was configures with success, false if not or if a inexisten CCP module is selected</returns>
         public bool CCPx_CFG(byte CCPModule, byte Configuration)
         {
-            byte[] SndData = new byte[64];
+            byte[] SndData = new byte[65];
 
-            //SndData[0] = 0;                                                                     //If this is not zero it wont work
-            SndData[0] = CMD_CCP_CFG;                                                           //CMD
+            SndData[0] = 0;                                                                     //If this is not zero it wont work
+            SndData[1] = CMD_CCP_CFG;                                                           //CMD
 
             if (CCPModule == 1)
             {
-                SndData[1] = CCP1;                                                              //CCP module
+                SndData[2] = CCP1;                                                              //CCP module
             }
             else if (CCPModule == 2)
             {
-                SndData[1] = CCP2;                                                              //CCP module
+                SndData[2] = CCP2;                                                              //CCP module
             }
             else
             {
@@ -1595,7 +1519,7 @@ namespace AccessB_Debug
                 return false;
             }
 
-            SndData[2] = Configuration;
+            SndData[3] = Configuration;
 
             if (WriteUSB(ref SndData) == false)                                                 //Envia el comando a la tarjeta
             {
@@ -1613,33 +1537,33 @@ namespace AccessB_Debug
         /// <param name="Fpwm">Frequency in Hertz</param>
         public void PWM_FPWM(double _FPWM_)
         {
-            byte[] SndData = new byte[64];
+            byte[] SndData = new byte[65];
 
             double PR2_1, PR2_2, PR2_3;
-            //SndData[0] = 0;                                                                     //If this is not zero it wont work
-            SndData[0] = CMD_PWM_FPWM;                                                          //CMD
+            SndData[0] = 0;                                                                     //If this is not zero it wont work
+            SndData[1] = CMD_PWM_FPWM;                                                          //CMD
             PR2_1 = 1.0 / (_FPWM_ * 4.0 * (1 / 48000000.0));                                      //TMR2 prescaler = 1
             PR2_2 = 1.0 / (_FPWM_ * 4.0 * (1 / 48000000.0) * 4.0);                                //TMR2 prescaler = 4
             PR2_3 = 1.0 / (_FPWM_ * 4.0 * (1 / 48000000.0) * 16.0);                               //TMR2 prescaler = 16
 
             if (PR2_1 < 255)
             {
-                SndData[1] = Convert.ToByte(PR2_1);
-                SndData[2] = 0;
+                SndData[2] = Convert.ToByte(PR2_1);
+                SndData[3] = 0;
                 Fpwm = _FPWM_;
                 PWM_TMR2Prescaler = 1;
             }
             else if (PR2_2 < 255)
             {
-                SndData[1] = Convert.ToByte(PR2_2);
-                SndData[2] = 1;
+                SndData[2] = Convert.ToByte(PR2_2);
+                SndData[3] = 1;
                 Fpwm = _FPWM_;
                 PWM_TMR2Prescaler = 4;
             }
             else if (PR2_3 < 255)
             {
-                SndData[1] = Convert.ToByte(PR2_3);
-                SndData[2] = 3;
+                SndData[2] = Convert.ToByte(PR2_3);
+                SndData[3] = 3;
                 Fpwm = _FPWM_;
                 PWM_TMR2Prescaler = 16;
             }
@@ -1663,27 +1587,27 @@ namespace AccessB_Debug
         /// <param name="DT">Duty cyle in %</param>
         public void PWM_DC(UInt32 CCPModule, double DT)
         {
-            byte[] SndData = new byte[64];
+            byte[] SndData = new byte[65];
             double _DT; //Duty cycle in time
             UInt32 CCP_PWMbits;
 
-            //SndData[0] = 0;                                                                     //If this is not zero it wont work
-            SndData[0] = CMD_PWM_DC;                                                            //CMD
+            SndData[0] = 0;                                                                     //If this is not zero it wont work
+            SndData[1] = CMD_PWM_DC;                                                            //CMD
 
             if (CCPModule == 1)
             {
-                SndData[1] = CCP1;                                                              //CCP module
+                SndData[2] = CCP1;                                                              //CCP module
             }
             else if (CCPModule == 2)
             {
-                SndData[1] = CCP2;
+                SndData[2] = CCP2;
             }
 
             _DT = (1 / Fpwm) * (DT / 100.0); //Given the duty cycle in percentage, calculate the Duty cycle in time
             CCP_PWMbits = Convert.ToUInt32((_DT * 48000000) / (PWM_TMR2Prescaler)); //With the duty cycle in time and the selected prescaler value calcaulate 10bits
 
-            SndData[2] = Convert.ToByte(((CCP_PWMbits & 0x003) << 4) | 0x0F);
-            SndData[3] = Convert.ToByte((CCP_PWMbits & 0xFFC) >> 2);
+            SndData[3] = Convert.ToByte(((CCP_PWMbits & 0x003) << 4) | 0x0F);
+            SndData[4] = Convert.ToByte((CCP_PWMbits & 0xFFC) >> 2);
 
             if (WriteUSB(ref SndData) == false)                                                 //Envia el comando a la tarjeta
             {
@@ -1846,12 +1770,12 @@ namespace AccessB_Debug
         /// <param name="Data">Array of data to be transmited</param>
         public void EUSART_Tx(byte NumOfTxBytes, byte[] Data)
         {
-            byte[] SndData = new byte[64];
+            byte[] SndData = new byte[65];
 
-            //SndData[0] = 0;                                                                     //If this is not zero it wont work
-            SndData[0] = CMD_EUSART_TX;
-            SndData[1] = NumOfTxBytes;
-            Data.CopyTo(SndData, 2);
+            SndData[0] = 0;                                                                     //If this is not zero it wont work
+            SndData[1] = CMD_EUSART_TX;
+            SndData[2] = NumOfTxBytes;
+            Data.CopyTo(SndData, 3);
             if (WriteUSB(ref SndData) == false)                                                 //Envia el comando a la tarjeta
             {
                 MessageBox.Show("EUSART Tx error: Failed to send data.");
@@ -1864,24 +1788,24 @@ namespace AccessB_Debug
         /// </summary>
         /// <param name="TypeRX">Tell if it's a single receive or continous receive, when Async CFG this field don't care, but must be set to any of two values.</param>
         /// <param name="NumOfRxBytes">Number of bytes to be received</param>
-        /// <returns>Array of bytes with long defined by NumOfRxBytes var, max 64 bytes</returns>
+        /// <returns>Array of 64 bytes long of data</returns>
         public byte[] EUSART_Rx(UInt32 TypeRX, byte NumOfRxBytes)
         {
-            byte[] SndData = new byte[64];
-            byte[] RcvData = new byte[64];
+            byte[] SndData = new byte[65];
+            byte[] RcvData = new byte[65];
             byte[] EUSARTRead = new byte[NumOfRxBytes];
 
-            //SndData[0] = 0;                                                                     //If this is not zero it wont work
-            SndData[0] = CMD_EUSART_RX;
+            SndData[0] = 0;                                                                     //If this is not zero it wont work
+            SndData[1] = CMD_EUSART_RX;
             if (TypeRX == EUSART_CONTINOUS_RX)
             {
-                SndData[1] = 1;                                                                 //Single Receive
+                SndData[2] = 1;                                                                 //Single Receive
             }
             else
             {
-                SndData[1] = 0;                                                                 //Continous receive
+                SndData[2] = 0;                                                                 //Continous receive
             }
-            SndData[2] = NumOfRxBytes;
+            SndData[3] = NumOfRxBytes;
             if (WriteUSB(ref SndData) == false)                                                 //Envia el comando a la tarjeta
             {
                 MessageBox.Show("EUSART Rx error: Failed to send data.");
@@ -1889,7 +1813,7 @@ namespace AccessB_Debug
             }
             if (ReadUSB(ref RcvData, false) == true)                                            
             {
-                Array.ConstrainedCopy(RcvData, 0, EUSARTRead, 0, NumOfRxBytes);
+                Array.ConstrainedCopy(RcvData, 1, EUSARTRead, 0, NumOfRxBytes);
                 return EUSARTRead;
             }
             else
@@ -1998,9 +1922,9 @@ namespace AccessB_Debug
         /// </summary>
         public void TEST_FCN()
         {
-            byte[] SndData = new byte[64];
-            //SndData[0] = 0;                                                                 //If this is not zero it wont work
-            SndData[0] = CMD_TEST;
+            byte[] SndData = new byte[65];
+            SndData[0] = 0;                                                                 //If this is not zero it wont work
+            SndData[1] = CMD_TEST;
             if (WriteUSB(ref SndData) == false)                                             //Envia el comando a la tarjeta
             {
                 MessageBox.Show("Test command error: Failed to send data.");
@@ -2019,8 +1943,8 @@ namespace AccessB_Debug
         string[] _UDFStringData;
         public bool PROGRAM_UDF(ulong StartAddress, byte[] ProgramData)
         {
-            byte[] SndData = new byte[64];
-            byte[] RcvData = new byte[64];
+            byte[] SndData = new byte[65];
+            byte[] RcvData = new byte[65];
             string[] delimiters = new string[1];
             string[] renglones, UDFStringData;
             string FileRead, ISRCallAdd, StringStartAdd;
@@ -2030,11 +1954,11 @@ namespace AccessB_Debug
             FileRead = Encoding.ASCII.GetString(ProgramData);
             renglones = FileRead.Split(delimiters, System.StringSplitOptions.None);
 
-            uint j = 0; //Generic counter
+            uint j = 0;
             bool FirstTime = true;
             StringStartAdd = StartAddress.ToString();
 
-            string Address = "4280";     //From this Address start the UDF in the 18F2550 flash program memory, this value is defined in UDF.C file, manual section
+            string Address = "41C0";     //From this Address start the UDF in the 18F2550 flash program memory
 
             //Search for UDF program data
             for (uint i = 0; i != renglones.Length - 5; i++)
@@ -2081,40 +2005,38 @@ namespace AccessB_Debug
 
             //Extract only the data to be programmed in blocks of 32 bytes
             //Problema aqui, el ciclo for no llena de manera adecuada
-            j = 0; //Generic purpose counter
-            for (uint k = 0; k != BlockNum; k++)
+            for (uint k = 0; k <= BlockNum; k = k + 2)
             {
                 try
                 {
-                    UDFStringData[k] = _UDFStringData[j].Substring(9, _UDFStringData[j].Length - 11) + _UDFStringData[j + 1].Substring(9, _UDFStringData[j + 1].Length - 11);
+                    UDFStringData[k] = _UDFStringData[k].Substring(9, _UDFStringData[k].Length - 11) + _UDFStringData[k + 1].Substring(9, _UDFStringData[k + 1].Length - 11);
                 }
                 catch (Exception ex)
                 {
-                    UDFStringData[k] = _UDFStringData[j].Substring(9, _UDFStringData[j].Length - 11);
+                    UDFStringData[k - 1] = _UDFStringData[k].Substring(9, _UDFStringData[k].Length - 11);
                 }
-                j = j + 2;
             }
-
-                //If is needed fill the last byte with 0xFF value
-                if (UDFStringData[UDFStringData.Length - 1].Length != 64)
+            
+            //If is needed fill the last byte with 0xFF value
+            if (UDFStringData[UDFStringData.Length - 1].Length != 64)
+            {
+                int number;
+                number = 64 - UDFStringData[UDFStringData.Length - 1].Length;
+                for (uint k = 0; k != number; k++)
                 {
-                    int number;
-                    number = 64 - UDFStringData[UDFStringData.Length - 1].Length;
-                    for (uint k = 0; k != number; k++)
-                    {
-                        UDFStringData[UDFStringData.Length - 1] = UDFStringData[UDFStringData.Length - 1] + "F";
-                    }
+                    UDFStringData[UDFStringData.Length - 1] = UDFStringData[UDFStringData.Length - 1] + "F";
                 }
+            }
 
             //The ISR call addrress depend directly from UDF code size, we must get address to reprogram it so the ISR can be executed.
             ISRCallAdd = renglones[4].Substring(25, renglones[4].Length - 27) + renglones[5].Substring(9, renglones[5].Length - 11) + renglones[6].Substring(9, renglones[6].Length - 11) + renglones[7].Substring(9, renglones[7].Length - 11) + renglones[8].Substring(9, renglones[8].Length - 27);
 
-            //SndData[0] = 0;
-            SndData[0] = CMD_PROGRAM_UDF;
-            SndData[1] = Convert.ToByte(((int)UDFStringData.Length & 0xF0) >> 8);       //BlockNum High byte
-            SndData[2] = Convert.ToByte((int)UDFStringData.Length & 0x0F);              //BlockNum Low byte
-            SndData[3] = Convert.ToByte((StartAddress & 0xFF00) >> 8);                  //StartAddress High byte
-            SndData[4] = Convert.ToByte(StartAddress & 0xFF);                           //StartAddress Low byte
+            SndData[0] = 0;
+            SndData[1] = CMD_PROGRAM_UDF;
+            SndData[2] = Convert.ToByte(((int)UDFStringData.Length & 0xF0) >> 8);       //BlockNum High byte
+            SndData[3] = Convert.ToByte((int)UDFStringData.Length & 0x0F);              //BlockNum Low byte
+            SndData[4] = Convert.ToByte((StartAddress & 0xFF00) >> 8);                  //StartAddress High byte
+            SndData[5] = Convert.ToByte(StartAddress & 0xFF);                           //StartAddress Low byte
 
             //Send command and start address
             if (WriteUSB(ref SndData) == false)
@@ -2126,7 +2048,7 @@ namespace AccessB_Debug
             //Wait for Successful operation
             if (ReadUSB(ref RcvData, false) == true)
             {
-                if (RcvData[0] == UDF_READY)
+                if (RcvData[1] == UDF_READY)
                 {
                     //The first two blocks of send pogram memory will be the ISR call opcode
                     //Send the memory blocks to be programed one by one
@@ -2167,8 +2089,8 @@ namespace AccessB_Debug
                         }
 
                         //concatenate each pair of nibbles to form a 32 bytes block
-                        j = 0;
-                        //SndData[0] = 0;                                 //Always this must be zero or it will not work!!
+                        j = 1;
+                        SndData[0] = 0;                                 //Always this must be zero or it will not work!!
                         for (uint k = 0; k != 64; k = k + 2)
                         {
                             SndData[j] = (byte)(((int)TempUDFData[k] << 4) | (int)(TempUDFData[k + 1]));
@@ -2185,7 +2107,7 @@ namespace AccessB_Debug
                         //Wait for Successful operation
                         if (ReadUSB(ref RcvData, false) == true)
                         {
-                            if (RcvData[0] != UDF_PROGRAM_SUCCESS)
+                            if (RcvData[1] != UDF_PROGRAM_SUCCESS)
                             {
                                 MessageBox.Show("ProgramUDF error at Block " + i.ToString() + ": Verify process fail");
                                 return false;
@@ -2217,136 +2139,16 @@ namespace AccessB_Debug
         /// </summary>
         public void CALL_UDF()
         {
-            byte[] SndData = new byte[64];
+            byte[] SndData = new byte[65];
 
-            //SndData[0] = 0;
-            SndData[0] = CMD_CALL_UDF;
+            SndData[0] = 0;
+            SndData[1] = CMD_CALL_UDF;
 
             if (WriteUSB(ref SndData) == false)                                             //Envia el comando a la tarjeta
             {
                 MessageBox.Show("Call UDF error: Failed to send data.");
             }
         }
-
-        /// <summary>
-        /// Set the logic value of GPIO pins from GPIO1 to GPIO19, GPIO0 is input only.  
-        /// </summary>
-        /// <param name="value">32 bit value to be set on the 20 GPIO, GPIO0 (RE3) is input only and the value set will be ignored.</param>
-        public void GPIO(UInt32 value)
-        {
-            UInt32 PORT = 0;
-            UInt32 PORTtemp1 = 0;
-            UInt32 PORTtemp2 = 0;
-
-            //PORTA
-            PORT = (value >> 13) & 0x3F;
-            PORTA = PORT;
-
-            //PORTB
-            PORT = (value >> 5) & 0xFF;
-            PORTB = PORT;
-
-            //PORTC
-            PORTtemp1 = value & 0x1F;
-            PORTtemp2 = PORTtemp1 & 0x7;
-            PORT = ((PORTtemp1 & 0xC0) << 3) | PORTtemp2;
-            PORTC = PORT;
-        }
-
-        /// <summary>
-        /// Get all GPIO PIN value
-        /// </summary>
-        /// <returns>32 bit value of all GPIO PIN, GPIO19 - GPIO0</returns>
-        public UInt32 GPIO()
-        {
-            UInt32 PORTCtemp1, PORTCtemp2;
-
-            PORTCtemp1 = (TRISC & 0x7);
-            PORTCtemp2 = (TRISC & 0xC0) >> 3;
-
-            return ((PORTA & 0x3F) << 14) | ((PORTB & 0xFF) << 6) | ((PORTCtemp1 | PORTCtemp2) << 1) | PORTEbits_RE3;
-        }
-
-        /// <summary>
-        /// Set the value of the GPIO LATCH register, equivalent to write to the LATx registers
-        /// </summary>
-        /// <param name="value">32 bit value to be write on LATCH registers, GPIO0 LATCH isn't implemented on 18F2550 devies so that value is ignored.</param>
-        public void GPIO_LATCH(UInt32 value)
-        {
-            UInt32 LATCH = 0;
-            UInt32 LATCHtemp1 = 0;
-            UInt32 LATCHtemp2 = 0;
-
-            //PORTA
-            LATCH = (value >> 13) & 0x3F;
-            LATA = LATCH;
-
-            //PORTB
-            LATCH = (value >> 5) & 0xFF;
-            LATB = LATCH;
-
-            //PORTC
-            LATCHtemp1 = value & 0x1F;
-            LATCHtemp2 = LATCHtemp1 & 0x7;
-            LATCH = ((LATCHtemp1 & 0xC0) << 3) | LATCHtemp2;
-            LATC = LATCH;
-        }
-
-        /// <summary>
-        /// Get the GPIO Latch register value for all GPIO, GPIO0 Latch register (LATE) isn't implemented on 18F2550 devices that value will be ignored.
-        /// </summary>
-        /// <returns>The value of all GPIO Latch registers, latch value for GPIO0 must be ignored, latch register for GPIO0 (LATE) isn't implemented on 18F2550 devices.</returns>
-        public UInt32 GPIO_LATCH()
-        {
-            UInt32 LATCtemp1, LATCtemp2;
-
-            LATCtemp1 = (LATC & 0x7);
-            LATCtemp2 = (LATC & 0xC0) >> 3;
-
-            return ((LATA & 0x3F) << 14) | ((LATB & 0xFF) << 6) | ((LATCtemp1 | LATCtemp2) << 1) | 0;
-        }
-       
-        /// <summary>
-        /// Set the direction of all GPIO, 1 is input 0 is output, this method is equivalent to use the TRIS registers
-        /// </summary>
-        /// <param name="Direction">32 bit value of the direction, GPIO0 (RE3) isn't implemented in 18F2550 devices so it's value will be ignored</param>
-        public void GPIO_DIR(UInt32 Direction)
-        {
-
-            UInt32 TRIS = 0;
-            UInt32 TRIStemp1 = 0;
-            UInt32 TRIStemp2 = 0;
-
-            //TRISA
-            TRIS = (Direction >> 14) & 0x3F;
-            TRISA = TRIS;
-
-            //TRISB
-            TRIS = (Direction >> 6) & 0xFF;
-            TRISB = TRIS;
-
-            //TRISC
-            TRIStemp1 = (Direction >> 1) & 0x1F;
-            TRIStemp2 = TRIStemp1 & 0x7;
-            TRIS = ((TRIStemp1 <<3) & 0xC0) | TRIStemp2;
-            TRISC = TRIS;
-        }
-
-        //Get GPIO direction
-        /// <summary>
-        /// Get the direction value of all GPIO pins, GPIO0 (RE3) isn't implemented on 18F2550 devices so it's value must be ignored.
-        /// </summary>
-        /// <returns>32 bit value of all GPIO direction, 1 is input, 0 is output, GPIO0 (RE3) isn't implemented on 18F2550 devices so it's value must be ignored.</returns>
-        public UInt32 GPIO_DIR()
-        {
-            UInt32 TRISCtemp1, TRISCtemp2;
-
-            TRISCtemp1 = TRISC & 0x7;
-            TRISCtemp2 = (TRISC & 0xC0) >> 3;
-            
-            return ((TRISA & 0x3F) << 14) | ((TRISB & 0xFF) << 6) | (TRISCtemp1 |TRISCtemp2) << 1 | 0;
-        }
-
         #endregion
     }
 }

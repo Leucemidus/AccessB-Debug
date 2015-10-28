@@ -74,25 +74,17 @@ namespace AccessB_Debug
             cmbSFR_10.SelectedIndex = 0;
         }
 
-        private void btnCFGEUSART_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            AccB.EUSART_CFG(AccB.CFG_EUSART_AS_Generic_Async);
-            AccB.EUSART_BAUDRATE(2400);
+            if (AccB.TRISBbits_TRISB0 == 1)
+            {
+                AccB.TRISBbits_TRISB0 = 0;
+            }
+            else
+            {
+                AccB.TRISBbits_TRISB0 = 1;
+            }
         }
-
-        private void btnEUSARTON_Click(object sender, EventArgs e)
-        {
-            AccB.EUSART_ENABLE(true);
-        }
-
-        private void btnEnvia_Click(object sender, EventArgs e)
-        {
-            byte[] datos = new byte[2];
-            datos[0] = 0xAA;
-            datos[1] = 0xBB;
-            AccB.EUSART_Tx(2, datos);
-        }
-
 
 
 
@@ -134,10 +126,6 @@ namespace AccessB_Debug
         //    txdata[2] = Convert.ToByte(txbValue.Text); //Data
         //    Rxdata = AccB.I2C_Transfer(SlaveAdd, 7, AccB.I2C_Write, 3, 0, txdata, AccB.I2C_No_Repeat);
         //}
-
-
-
-
 
     }
 }

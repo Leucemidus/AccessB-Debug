@@ -53,9 +53,8 @@
             this.txtbSFR_9 = new System.Windows.Forms.TextBox();
             this.cmbSFR_9 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnCFGEUSART = new System.Windows.Forms.Button();
-            this.btnEUSARTON = new System.Windows.Forms.Button();
-            this.btnEnvia = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -1582,9 +1581,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnEnvia);
-            this.groupBox2.Controls.Add(this.btnEUSARTON);
-            this.groupBox2.Controls.Add(this.btnCFGEUSART);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Location = new System.Drawing.Point(12, 213);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(494, 267);
@@ -1592,35 +1590,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Test Space";
             // 
-            // btnCFGEUSART
+            // button1
             // 
-            this.btnCFGEUSART.Location = new System.Drawing.Point(52, 57);
-            this.btnCFGEUSART.Name = "btnCFGEUSART";
-            this.btnCFGEUSART.Size = new System.Drawing.Size(119, 35);
-            this.btnCFGEUSART.TabIndex = 0;
-            this.btnCFGEUSART.Text = "Configura EUSART";
-            this.btnCFGEUSART.UseVisualStyleBackColor = true;
-            this.btnCFGEUSART.Click += new System.EventHandler(this.btnCFGEUSART_Click);
+            this.button1.Location = new System.Drawing.Point(217, 142);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(146, 46);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnEUSARTON
+            // textBox1
             // 
-            this.btnEUSARTON.Location = new System.Drawing.Point(53, 98);
-            this.btnEUSARTON.Name = "btnEUSARTON";
-            this.btnEUSARTON.Size = new System.Drawing.Size(119, 35);
-            this.btnEUSARTON.TabIndex = 0;
-            this.btnEUSARTON.Text = "Enciende EUSART";
-            this.btnEUSARTON.UseVisualStyleBackColor = true;
-            this.btnEUSARTON.Click += new System.EventHandler(this.btnEUSARTON_Click);
-            // 
-            // btnEnvia
-            // 
-            this.btnEnvia.Location = new System.Drawing.Point(52, 139);
-            this.btnEnvia.Name = "btnEnvia";
-            this.btnEnvia.Size = new System.Drawing.Size(119, 35);
-            this.btnEnvia.TabIndex = 0;
-            this.btnEnvia.Text = "Envia";
-            this.btnEnvia.UseVisualStyleBackColor = true;
-            this.btnEnvia.Click += new System.EventHandler(this.btnEnvia_Click);
+            this.textBox1.Location = new System.Drawing.Point(135, 86);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(139, 20);
+            this.textBox1.TabIndex = 1;
             // 
             // Form1
             // 
@@ -1635,6 +1620,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1666,9 +1652,8 @@
         private System.Windows.Forms.TextBox txtbSFR_8;
         private System.Windows.Forms.TextBox txtbSFR_9;
         private System.Windows.Forms.ComboBox cmbSFR_9;
-        private System.Windows.Forms.Button btnEnvia;
-        private System.Windows.Forms.Button btnEUSARTON;
-        private System.Windows.Forms.Button btnCFGEUSART;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
